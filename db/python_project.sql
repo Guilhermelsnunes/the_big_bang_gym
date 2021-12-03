@@ -4,19 +4,21 @@ DROP TABLE gym_classes;
 
 
 CREATE TABLE members (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255)
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    age INT
 );
 
 CREATE TABLE gym_classes (
-  id SERIAL PRIMARY KEY,
-  category VARCHAR(255),
-  name VARCHAR(255)
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    date INT,
+    duration INT
 );
 
 CREATE TABLE bookings(
-  id SERIAL PRIMARY KEY,
-  user_id INT REFERENCES users(id) ON DELETE CASCADE,   --(delete cascade)if a user is deleted, any of his visits will also be deleted
-  location_id INT REFERENCES locations(id) ON DELETE CASCADE,  -- location deleted, all visits will be deleted
-  review TEXT
+    id SERIAL PRIMARY KEY,
+    member_id INT REFERENCES members(id) ON DELETE CASCADE,
+    gym_class_id INT REFERENCES gym_classes(id) ON DELETE CASCADE,
 );
