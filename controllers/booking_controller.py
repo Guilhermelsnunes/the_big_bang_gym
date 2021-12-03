@@ -5,16 +5,16 @@ import repositories.booking_repository as booking_repository
 import repositories.member_repository as member_repository
 import repositories.gym_class_repository as gym_class_repository
 
-visits_blueprint = Blueprint("bookings", __name__)
+bookings_blueprint = Blueprint("bookings", __name__)
 
-@visits_blueprint.route("/bookings")
+@bookings_blueprint.route("/bookings")
 def bookings():
     bookings = booking_repository.select_all()
     return render_template("bookings/index.html", bookings = bookings)
 
 # NEW
 # GET '/visits/new'
-@visits_blueprint.route("/bookings/new", methods=['GET'])
+@bookings_blueprint.route("/bookings/new", methods=['GET'])
 def new_task():
     members = member_repository.select_all()
     gym_classes = gym_class_repository.select_all()
@@ -22,7 +22,7 @@ def new_task():
 
 # CREATE
 # POST '/visits'
-@visits_blueprint.route("/bookings",  methods=['POST'])
+@bookings_blueprint.route("/bookings",  methods=['POST'])
 def create_task():
     member_id = request.form['member_id']
     gym_class_id = request.form['gym_class_id']
@@ -35,10 +35,10 @@ def create_task():
 
 # DELETE
 # DELETE '/visits/<id>'
-@visits_blueprint.route("/visits/<id>/delete", methods=['POST'])
+@bookings_blueprint.route("/bookings/<id>/delete", methods=['POST'])
 def delete_task(id):
-    visit_repository.delete(id)
-    return redirect('/visits')
+    booking_repository.delete(id)
+    return redirect('/bookings')
 
 
 
