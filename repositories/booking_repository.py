@@ -6,7 +6,7 @@ import repositories.gym_class_repository as gym_class_repository
 
 def save(booking):
     sql = "INSERT INTO bookings ( member_id, gym_class_id ) VALUES ( %s, %s ) RETURNING id"
-    values = [booking.member.id, booking.gym_class.id, booking.review]
+    values = [booking.member.id, booking.gym_class.id]
     results = run_sql( sql, values )
     booking.id = results[0]['id']
     return booking
@@ -50,11 +50,13 @@ def select_all():
 
 
 
-
+#don't think we need a delete all...
 def delete_all():
     sql = "DELETE FROM bookings"
     run_sql(sql)
 
+
+#delete by id 
 def delete(id):
     sql = "DELETE FROM bookings WHERE id = %s"
     values = [id]
