@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Members</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for member in members %}
+  <tr>
+    <td>{{member.last_name}},{{member.first_name }}</td>
+    <td>{{member.age}}</td>
+    <td><a href="/members/{{member.id}}">Details</a></td>
+    <td><a href="/members/edit/{{member.id}}">Edit</a></td>
+    <td><a href="/members/remove/{{member.id}}">Remove</a></td>
+  </tr>
+  {% endfor %}
+</table>
+<br/>
+<a href="/members/add">Click to add a new member</a>
+{% endblock %}

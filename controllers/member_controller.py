@@ -14,5 +14,34 @@ def members():
 @members_blueprint.route("/members/<id>")
 def show(id):
     member = member_repository.select(id)
-    gym_classes = gym_class_repository.gym_classes(member)
-    return render_template("member/show.html", member=member, gym_class=gym_classes)
+    gym_classes = []
+    if member is not None:
+        gym_classes = gym_class_repository.select_classes(member)
+    return render_template("members/show.html", member=member, gym_classes=gym_classes)
+
+@members_blueprint.route("/members/edit/<id>")
+def edit(id):
+    member = member_repository.select(id)
+    return render_template("members/edit.html", member=member)
+
+@members_blueprint.route("/members/create", methods=['POST'])
+def create():
+    member = Member(request.form['first_name'],request.form['last_name'],request.form['age'], 0)
+    member_repository.save(member)
+    return redirect('/members')
+
+@members_blueprint.route("/members/save", methods=['POST'])
+def save():
+    member = Member(request.form['first_name'],request.form['last_name'],request.form['age'],request.form['id'])
+    member_repository.edit(member)
+    return redirect('/members')
+
+@members_blueprint.route("/members/remove/<id>")
+def delete(id):
+    member_repository.delete(id)
+    return redirect('/members')
+
+@members_blueprint.route("/members/add")
+def add():
+    return render_template("members/add.html")
+    

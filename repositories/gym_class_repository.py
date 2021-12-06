@@ -10,6 +10,13 @@ def save(gym_class):
     return gym_class
 
 
+def edit(gym_class):
+    sql = "UPDATE gym_classes SET name=%s, date=%s, duration=%s WHERE id=%s"
+    values = [gym_class.name,    gym_class.date,     gym_class.duration,     gym_class.id]
+    results = run_sql (sql, values)
+    return results
+
+
 def select_all():
     gym_classes = []
 
@@ -32,15 +39,24 @@ def select(id):
         gym_class = Gym_class(result['name'], result['date'], result['duration'], result['id'] )
     return gym_class
 
+def upcoming_classes():
+    gym_classes =[]
+    sql = "SELECT * FROM gym_classes WHERE TO_TIMESTAMP( date, 'DD-MM-YYYY HH:MI:SS') > CURRENT_TIMESTAMP"
+    results = run_sql(sql)
+    for row in results:
+        gym_class = Gym_class(row['name'], row['date'], row['duration'], row['id'])
+        gym_classes.append(gym_class)
+    return gym_classes 
+
 
 def delete_all():
     sql = "DELETE FROM gym_classes"
     run_sql(sql)
 
-def gym_classes(member):
+def select_classes(member):
     gym_classes = []
 
-    sql = "SELECT gym_classes.* FROM gym_classes INNER JOIN booking ON bookings.gym_class_id = gym_classes.id WHERE member_id = %s"
+    sql = "SELECT gym_classes.* FROM gym_classes INNER JOIN bookings ON bookings.gym_class_id = gym_classes.id WHERE member_id = %s"
     values = [member.id]
     results = run_sql(sql, values)
 
@@ -49,3 +65,4 @@ def gym_classes(member):
         gym_classes.append(gym_class)
 
     return gym_classes
+

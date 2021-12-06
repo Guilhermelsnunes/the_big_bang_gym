@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- (rock paper scissors) if gym class is none 
+mensagem - not found
+else  -->
+
+<h1> {{gym_class.name}}-{{gym_class.date}}</h1>
+
+<h3>Members</h3>
+<ul>
+    {% for member in members %}
+    <li>{{member.last_name}},{{ member.first_name }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

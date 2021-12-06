@@ -7,6 +7,10 @@ import repositories.gym_class_repository as gym_class_repository
 
 bookings_blueprint = Blueprint("bookings", __name__)
 
+
+
+
+
 @bookings_blueprint.route("/bookings")
 def bookings():
     bookings = booking_repository.select_all()

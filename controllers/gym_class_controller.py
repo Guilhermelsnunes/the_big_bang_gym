@@ -15,8 +15,10 @@ def gym_classes():
 @gym_classes_blueprint.route("/gym_classes/<id>")
 def show(id):
     gym_class = gym_class_repository.select(id)
-    members = member_repository.members(gym_class)
-    return render_template("gym_class/show.html", gym_class=gym_class, members=members)
+    members = []
+    if gym_class is not None:    
+        members = member_repository.select_members(gym_class)
+    return render_template("gym_classes/show.html", gym_class=gym_class, members=members)
 
 
 

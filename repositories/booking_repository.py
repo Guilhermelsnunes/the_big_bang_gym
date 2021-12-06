@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.booking import Booking
+from models.member import Member
 import repositories.member_repository as member_repository
 import repositories.gym_class_repository as gym_class_repository
 
@@ -14,6 +15,26 @@ def save(booking):
 def select_all():
     bookings = []
 
+# SELECT
+#   b.id,
+#   b.member_id,
+#   b.gym_class_id,
+#   m.first_name,
+#   m.last_name,
+#   m.age,
+#   g.name,
+#   g.date,
+#   g.duration
+# FROM bookings b
+# JOIN members m ON m.id = b.member_id
+# JOIN gym_classes g ON g.id = b.gym_class_id
+
+#        member = Member(row['first_name'], row ['last_name'], row ['age'], row['member_id'])
+#        gym_class = Gym_class(row['name'], row['date'], row['duration'], row['gym_class_id'] )
+#        booking = Booking(member, gym_class, row['id'])
+#
+ 
+
     sql = "SELECT * FROM bookings"
     results = run_sql(sql)
 
@@ -23,6 +44,11 @@ def select_all():
         booking = Booking(member, gym_class, row['id'])
         bookings.append(booking)
     return bookings
+
+
+
+
+
 
 
 def delete_all():

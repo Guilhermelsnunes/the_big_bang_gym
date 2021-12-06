@@ -4,19 +4,24 @@ from models.gym_class import Gym_class
 from models.member import Member
 
 def save(member):
-    sql = "INSERT INTO member( first_name, last_name, age ) VALUES ( %s, %s, %s ) RETURNING id"
-    values = [member.first_name]
-    values = [member.last_name]
-    values = [member.age]
+    sql = "INSERT INTO members( first_name, last_name, age ) VALUES ( %s, %s, %s ) RETURNING id"
+    values = [member.first_name,member.last_name,member.age]
     results = run_sql( sql, values )
     member.id = results[0]['id']
     return member
+
+def edit(member):
+    sql = "UPDATE members SET first_name=%s, last_name=%s, age=%s WHERE id=%s"
+    values = [member.first_name    ,member.last_name    ,member.age    ,member.id]
+    results = run_sql (sql, values)
+    return results
+
 
 
 def select_all():
     members = []
 
-    sql = "SELECT * FROM members"
+    sql = "SELECT * FROM members ORDER BY last_name, first_name"
     results = run_sql(sql)
     for row in results:
         member = Member(row['first_name'], row ['last_name'], row ['age'], row['id'])
@@ -25,7 +30,7 @@ def select_all():
 
 
 def select(id):
-    user = None
+    member = None
     sql = "SELECT * FROM members WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
@@ -35,21 +40,21 @@ def select(id):
     return member
 
 
-def delete_all():
-    sql = "DELETE FROM members"
-    run_sql(sql)
+def delete(id):
+    sql = "DELETE FROM members WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)
 
 
-def members(location):
+def select_members(gym_class):
     members = []
 
-    sql = "SELECT members.* FROM members INNER JOIN gym_glasses ON gym_classes.member_id = members.id WHERE gym_class_id = %s"
+    sql = "SELECT m.* FROM bookings b JOIN members m ON m.id = b.member_id WHERE gym_class_id = %s"
     values = [gym_class.id]
-    
     results = run_sql(sql, values)
 
     for row in results:
-        member = Member(row['first_name'], row ['last_name'], row ['age'], row ['id'])
+        member = Member(row['first_name'], row ['last_name'], row ['age'], row['id'])
         members.append(member)
-
     return members
+
