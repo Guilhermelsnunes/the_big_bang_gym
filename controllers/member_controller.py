@@ -38,12 +38,6 @@ def create():
     return redirect('/members')
 
 
-#post a saved member
-@members_blueprint.route("/members/save", methods=['POST'])
-def save():
-    member = Member(request.form['first_name'],request.form['last_name'],request.form['age'],request.form['id'])
-    member_repository.edit(member)
-    return redirect('/members')
 
 
 #delete a specific member based on id
@@ -58,3 +52,11 @@ def delete(id):
 def add():
     return render_template("members/add.html")
     
+
+
+#post a saved member
+@members_blueprint.route("/members/save", methods=['POST'])
+def save():
+    member = Member(request.form['first_name'],request.form['last_name'],request.form['age'],request.form['id'])
+    member_repository.edit(member)
+    return redirect('/members')

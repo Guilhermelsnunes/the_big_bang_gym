@@ -36,6 +36,7 @@ INSERT INTO members (first_name, last_name, age) VALUES ('Bernadette', 'Rostenko
 INSERT INTO gym_classes (name, date, duration) VALUES ('Jiu-Jitsu', '15/12/2021 18:00:00', 60);
 INSERT INTO gym_classes (name, date, duration) VALUES ('Capoeira', '20/12/2021 15:30:00', 45);
 INSERT INTO gym_classes (name, date, duration) VALUES ('Judo', '18/12/2021 11:30:00', 90);
+INSERT INTO gym_classes (name, date, duration) VALUES ('Boxe', '20/12/2021 16:30:00', 60);
 
 INSERT INTO  bookings (member_id, gym_class_id) VALUES (1,1);
 INSERT INTO  bookings (member_id, gym_class_id) VALUES (2,2);
@@ -43,4 +44,4 @@ INSERT INTO  bookings (member_id, gym_class_id) VALUES (3,3);
 INSERT INTO  bookings (member_id, gym_class_id) VALUES (4,1);
 INSERT INTO  bookings (member_id, gym_class_id) VALUES (5,2);
 INSERT INTO  bookings (member_id, gym_class_id) VALUES (6,3);
-INSERT INTO  bookings (member_id, gym_class_id) VALUES (7,1);
+INSERT INTO  bookings (member_id, gym_class_id) VALUES (7,4);

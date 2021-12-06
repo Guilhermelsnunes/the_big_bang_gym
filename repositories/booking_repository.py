@@ -12,6 +12,9 @@ def save(booking):
     return booking
 
 
+
+
+
 def select_all():
     bookings = []
 

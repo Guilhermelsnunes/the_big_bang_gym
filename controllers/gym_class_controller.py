@@ -27,7 +27,7 @@ def show(id):
 
 
 
-#add new gym class and post
+#add new gym class and save/post
 
 @gym_classes_blueprint.route("/gym_classes/add")
 def add():

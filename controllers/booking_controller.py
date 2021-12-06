@@ -9,8 +9,6 @@ bookings_blueprint = Blueprint("bookings", __name__)
 
 
 
-
-
 @bookings_blueprint.route("/bookings")
 def bookings():
     bookings = booking_repository.select_all()
@@ -27,7 +25,7 @@ def new_task():
 # CREATE
 # POST '/bookings'
 @bookings_blueprint.route("/bookings",  methods=['POST'])
-def create_task():
+def create_booking():
     member_id = request.form['member_id']
     gym_class_id = request.form['gym_class_id']
     member = member_repository.select(member_id)
@@ -37,13 +35,45 @@ def create_task():
     return redirect('/bookings')
 
 
-# DELETE
-# DELETE '/bookings/<id>'
-@bookings_blueprint.route("/bookings/<id>/delete", methods=['POST'])
-def delete_task(id):
+# DELETE - it worked!
+@bookings_blueprint.route("/bookings/remove/<id>/")
+def delete(id):
     booking_repository.delete(id)
     return redirect('/bookings')
 
 
 
 
+
+
+#   ADD new and save/post - NOT SAVING!
+
+@bookings_blueprint.route("/bookings/add")
+def add():
+    return render_template("bookings/add.html")
+
+@bookings_blueprint.route("/bookings/create", methods=['POST'])
+def create():
+    booking = Booking(request.form['member'],request.form['gym_class'])
+    booking_repository.save(booking)
+    return redirect('/bookings')
+
+
+
+
+
+
+
+#  EDIT a booking and post  -  ver o select q ta branco!
+
+@bookings_blueprint.route("/bookings/edit/<id>")
+def edit(id):
+    booking = booking_repository.select(id)
+    return render_template("bookings/edit.html", booking=booking)
+
+
+@bookings_blueprint.route("/bookings/save", methods=['POST'])
+def save():
+    booking = Booking(request.form['member_id'],request.form['gym_class_id'],)
+    booking_repository.edit(booking)
+    return redirect('/booking')
