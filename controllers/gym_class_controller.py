@@ -59,8 +59,3 @@ def save():
 
 
 
-
-# do I need this below??
-# @members_blueprint.route("/members/add")
-# def add():
-#     return render_template("members/add.html")

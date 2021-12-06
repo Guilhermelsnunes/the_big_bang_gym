@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bookings</h1>
+
+<table>
+  <tr>
+    <th>Member</th>
+    <th>Gym Class</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for booking in bookings %}
+  <tr>
+    <td>{{booking.member.last_name }},{{booking.gym_class.name }}</td>
+    
+    <td><a href="/bookings/{{booking.id}}">Details</a></td>
+    <td><a href="/bookings/edit/{{booking.id}}">Edit</a></td>
+    <td><a href="/bookings/remove/{{booking.id}}">Remove</a></td>
+  </tr>
+  {% endfor %}
+</table>
+<br/>
+<a href="/bookings/add">Click to add a new booking</a>
+{% endblock %}
