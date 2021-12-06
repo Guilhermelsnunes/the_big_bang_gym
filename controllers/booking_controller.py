@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.booking import Booking
+from models.member import Member
 import repositories.booking_repository as booking_repository
 import repositories.member_repository as member_repository
 import repositories.gym_class_repository as gym_class_repository
@@ -43,24 +44,23 @@ def delete(id):
 
 
 
-
-
-
 #   ADD new and save/post - NOT SAVING!
 
 @bookings_blueprint.route("/bookings/add")
 def add():
-    return render_template("bookings/add.html")
+    members = member_repository.select_all()
+    gym_classes = gym_class_repository.select_all()
+    return render_template("bookings/add.html", members=members, gym_classes=gym_classes)
 
 @bookings_blueprint.route("/bookings/create", methods=['POST'])
 def create():
-    booking = Booking(request.form['member'],request.form['gym_class'])
-    booking_repository.save(booking)
+    #member = member_repository.select(request.form['member_id'])
+    #gym_class = gym_class_repository.select(request.form['gym_class_id'])
+    #booking = Booking(member, gym_class)
+    #booking_repository.save(booking)
+
+    booking_repository.save(request.form['member_id'], request.form['gym_class_id'])
     return redirect('/bookings')
-
-
-
-
 
 
 

@@ -1,0 +1,17 @@
+body, select, input{
+     font-family: 'Raleway', sans-serif; 
+
+}
+
+h1 {
+    font-weight: 700;
+}
+
+a:visited{
+    color:green
+}
+
+a:hover{
+    color: red;
+    font-weight: 700;
+}

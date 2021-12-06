@@ -3,11 +3,20 @@
 {% block content %}
 <form action="/bookings/create" method="POST">
 
-    <label for="gym_class">Gym Class:</label>
-    <input type="text" name="gym_class" value="">
+    <label for="gym_class_id">Gym Class:</label>
+    <select name="gym_class_id" size="25">
+        {% for gym_class in gym_classes %}
+            <option value="{{gym_class.id}}">{{gym_class.name}} - {{gym_class.date}}</option>
+        {% endfor %}
+    </select>
+    
 
-    <label for="member">Member:</label>
-    <input type="text" name="member" value="">
+    <label for="member_id">Member:</label>
+    <select name="member_id" size="25">
+        {% for member in members %}
+            <option value="{{member.id}}">{{member.last_name}},{{member.first_name}}</option>
+        {% endfor %}
+    </select>
 
 
     <input type="submit" value="Add">

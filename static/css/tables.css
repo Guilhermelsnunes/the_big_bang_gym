@@ -1,0 +1,23 @@
+table {
+    padding: 25px;
+    box-sizing: border-box;
+    border-collapse: collapse;
+}
+td,th{
+    padding-left:16px;
+    min-width: 200px;
+     text-align: left;
+}
+tr {
+    display:block;
+}
+tr:hover{
+    box-shadow: 0px 2px 18px 0px rgba(0,0,0,0.5);
+}
+
+table tr:nth-child(even){
+    background:#9ebef7;
+}
+table tr:nth-child(odd) {
+    background:#71a4fc;
+}

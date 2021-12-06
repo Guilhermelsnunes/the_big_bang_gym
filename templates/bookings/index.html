@@ -7,16 +7,15 @@
   <tr>
     <th>Member</th>
     <th>Gym Class</th>
-    <th></th>
-    <th></th>
+    <th>Gym Time</th>
     <th></th>
   </tr>
   {% for booking in bookings %}
   <tr>
-    <td>{{booking.member.last_name }},{{booking.gym_class.name }}</td>
+    <td>{{booking.member.last_name}},{{booking.member.first_name}}</td>
+    <td>{{booking.gym_class.name }}</td>    
+    <td>{{booking.gym_class.date}}</td>
     
-    <td><a href="/bookings/{{booking.id}}">Details</a></td>
-    <td><a href="/bookings/edit/{{booking.id}}">Edit</a></td>
     <td><a href="/bookings/remove/{{booking.id}}">Remove</a></td>
   </tr>
   {% endfor %}
