@@ -3,7 +3,7 @@ from models.gym_class import Gym_class
 from models.member import Member
 
 def save(gym_class):
-    sql = "INSERT INTO gym_class(name, date, duration) VALUES ( %s, %s, %s ) RETURNING id"
+    sql = "INSERT INTO gym_classes(name, date, duration) VALUES ( %s, %s, %s ) RETURNING id"
     values = [gym_class.name, gym_class.date, gym_class.duration]
     results = run_sql( sql, values )
     gym_class.id = results[0]['id']
@@ -66,3 +66,8 @@ def select_classes(member):
 
     return gym_classes
 
+
+def delete(id):
+    sql = "DELETE FROM gym_classes WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)

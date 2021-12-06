@@ -9,12 +9,19 @@
     <th>Date</th>
     <th>Duration</th>
   </tr>
+
   {% for gym_class in gym_classes %}
   <tr>
-    <td><a href="/gym_classes/{{gym_class.id}}"> {{gym_class.name}} </a></td>
-    <td>{{ gym_class.date }}</td>
-    <td>{{ gym_class.duration }}</td>
+    <td>{{gym_class.name}},{{gym_class.date }}</td>
+    <td>{{gym_class.duration}}</td>
+    <td><a href="/gym_classes/{{gym_class.id}}">Details</a></td>
+    <td><a href="/gym_classes/edit/{{gym_class.id}}">Edit</a></td>
+    <td><a href="/gym_classes/remove/{{gym_class.id}}">Remove</a></td>
   </tr>
   {% endfor %}
-</table>
-{% endblock %}
+  </table>
+  <br/>
+  <a href="/gym_classes/add">Click to add a new gym class</a>
+  {% endblock %}
+
+

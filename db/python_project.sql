@@ -24,13 +24,18 @@ CREATE TABLE bookings(
 );
 
 --Including records for testing
-INSERT INTO members (first_name, last_name, age) VALUES ('Guilherme', 'Nunes', 18);
-INSERT INTO members (first_name, last_name, age) VALUES ('David', 'Cipriano', 38);
-INSERT INTO members (first_name, last_name, age) VALUES ('Luigi', 'Cipriano', 15);
+INSERT INTO members (first_name, last_name, age) VALUES ('Sheldon', 'Cooper', 31);
+INSERT INTO members (first_name, last_name, age) VALUES ('Leonard', 'Hofstadter', 34);
+INSERT INTO members (first_name, last_name, age) VALUES ('Howard', 'Wolowitz', 28);
+INSERT INTO members (first_name, last_name, age) VALUES ('Rajesh', 'Koothrappali', 30);
+INSERT INTO members (first_name, last_name, age) VALUES ('Penny', 'Teller', 31);
+INSERT INTO members (first_name, last_name, age) VALUES ('Amy', 'Farrah Fowler', 29);
+INSERT INTO members (first_name, last_name, age) VALUES ('Bernadette', 'Rostenkowski', 29);
+
 
 INSERT INTO gym_classes (name, date, duration) VALUES ('Jiu-Jitsu', '15/12/2021 18:00:00', 60);
 INSERT INTO gym_classes (name, date, duration) VALUES ('Capoeira', '20/12/2021 15:30:00', 45);
-INSERT INTO gym_classes (name, date, duration) VALUES ('Judo', '06/12/2021 11:25:00', 90);
+INSERT INTO gym_classes (name, date, duration) VALUES ('Judo', '18/12/2021 11:30:00', 90);
 
 INSERT INTO  bookings (member_id, gym_class_id) VALUES (1,1);
 INSERT INTO  bookings (member_id, gym_class_id) VALUES (1,2);

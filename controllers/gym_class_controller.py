@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
+from models import gym_class
 from models.gym_class import Gym_class
 import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
@@ -22,3 +23,44 @@ def show(id):
 
 
 
+
+@gym_classes_blueprint.route("/gym_classes/add")
+def add():
+    return render_template("gym_classes/add.html")
+
+@gym_classes_blueprint.route("/gym_classes/create", methods=['POST'])
+def create():
+    gym_class = Gym_class(request.form['name'],request.form['date'],request.form['duration'])
+    gym_class_repository.save(gym_class)
+    return redirect('/gym_classes')
+
+
+
+#    dont forget delete - below!
+@gym_classes_blueprint.route("/gym_classes/remove/<id>")
+def delete(id):
+    gym_class_repository.delete(id)
+    return redirect('/gym_classes')
+
+
+#edit a gym class
+
+@gym_classes_blueprint.route("/gym_classes/edit/<id>")
+def edit(id):
+    gym_class = gym_class_repository.select(id)
+    return render_template("gym_classes/edit.html", gym_class=gym_class)
+
+@gym_classes_blueprint.route("/gym_classes/save", methods=['POST'])
+def save():
+    gym_class = Gym_class(request.form['name'],request.form['date'],request.form['duration'],request.form['id'])
+    gym_class_repository.edit(gym_class)
+    return redirect('/gym_classes')
+
+
+
+
+
+# do I need this below??
+# @members_blueprint.route("/members/add")
+# def add():
+#     return render_template("members/add.html")

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="/gym_classes/create" method="POST">
+
+    <label for="name">Class Name:</label>
+    <input type="text" name="name" value="">
+
+    <label for="date">Date:</label>
+    <input type="text" name="date" value="">
+
+    <label for="duration">Duration:</label>
+    <input type="text" name="duration" value="">
+
+    <input type="submit" value="Add">
+</form>
+{% endblock %}

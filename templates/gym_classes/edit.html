@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="/gym_classes/save" method="POST">
+    <input type="hidden" name="id" value={{gym_class.id}}>
+
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="{{gym_class.name}}">
+
+    <label for="date">Date:</label>
+    <input type="text" name="date" value="{{gym_class.date}}">
+
+    <label for="duration">Duration:</label>
+    <input type="text" name="duration" value="{{gym_class.duration}}">
+
+    <input type="submit" value="Save">
+</form>
+{% endblock %}
