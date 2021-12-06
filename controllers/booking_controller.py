@@ -17,7 +17,7 @@ def bookings():
     return render_template("bookings/index.html", bookings = bookings)
 
 # NEW
-# GET '/visits/new'
+# GET '/bookings/new'
 @bookings_blueprint.route("/bookings/new", methods=['GET'])
 def new_task():
     members = member_repository.select_all()
@@ -25,7 +25,7 @@ def new_task():
     return render_template("bookings/new.html", members = members, gym_classes = gym_classes)
 
 # CREATE
-# POST '/visits'
+# POST '/bookings'
 @bookings_blueprint.route("/bookings",  methods=['POST'])
 def create_task():
     member_id = request.form['member_id']
@@ -38,7 +38,7 @@ def create_task():
 
 
 # DELETE
-# DELETE '/visits/<id>'
+# DELETE '/bookings/<id>'
 @bookings_blueprint.route("/bookings/<id>/delete", methods=['POST'])
 def delete_task(id):
     booking_repository.delete(id)

@@ -6,11 +6,15 @@ import repositories.gym_class_repository as gym_class_repository
 
 members_blueprint = Blueprint("members", __name__)
 
+
+# show all members
 @members_blueprint.route("/members")
 def members():
     members = member_repository.select_all()
     return render_template("members/index.html", members = members)
 
+
+# show all id of memembers
 @members_blueprint.route("/members/<id>")
 def show(id):
     member = member_repository.select(id)
@@ -19,6 +23,9 @@ def show(id):
         gym_classes = gym_class_repository.select_classes(member)
     return render_template("members/show.html", member=member, gym_classes=gym_classes)
 
+
+
+#edit a member/id and post
 @members_blueprint.route("/members/edit/<id>")
 def edit(id):
     member = member_repository.select(id)
@@ -30,17 +37,23 @@ def create():
     member_repository.save(member)
     return redirect('/members')
 
+
+#post a saved member
 @members_blueprint.route("/members/save", methods=['POST'])
 def save():
     member = Member(request.form['first_name'],request.form['last_name'],request.form['age'],request.form['id'])
     member_repository.edit(member)
     return redirect('/members')
 
+
+#delete a specific member based on id
 @members_blueprint.route("/members/remove/<id>")
 def delete(id):
     member_repository.delete(id)
     return redirect('/members')
 
+
+#add a new member
 @members_blueprint.route("/members/add")
 def add():
     return render_template("members/add.html")

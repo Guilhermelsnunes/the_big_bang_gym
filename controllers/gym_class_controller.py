@@ -7,10 +7,13 @@ import repositories.member_repository as member_repository
 
 gym_classes_blueprint = Blueprint("gym_classes", __name__)
 
+
+
 @gym_classes_blueprint.route("/gym_classes")
 def gym_classes():
     gym_classes = gym_class_repository.select_all()
     return render_template("gym_classes/index.html", gym_classes = gym_classes)
+
 
 
 @gym_classes_blueprint.route("/gym_classes/<id>")
@@ -24,6 +27,8 @@ def show(id):
 
 
 
+#add new gym class and post
+
 @gym_classes_blueprint.route("/gym_classes/add")
 def add():
     return render_template("gym_classes/add.html")
@@ -36,6 +41,7 @@ def create():
 
 
 
+
 #    dont forget delete - below!
 @gym_classes_blueprint.route("/gym_classes/remove/<id>")
 def delete(id):
@@ -43,7 +49,10 @@ def delete(id):
     return redirect('/gym_classes')
 
 
-#edit a gym class
+
+
+
+#edit a gym class and post 
 
 @gym_classes_blueprint.route("/gym_classes/edit/<id>")
 def edit(id):
