@@ -58,3 +58,6 @@ booking_repository.save(booking4)
 print(gym_class_repository.gym_classes(member1))
 
 pdb.set_trace()
+
+
+
