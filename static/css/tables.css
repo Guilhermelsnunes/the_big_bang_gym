@@ -4,8 +4,8 @@ table {
     border-collapse: collapse;
 }
 td,th{
-    padding-left:16px;
-    min-width: 200px;
+    padding-left:25px;
+    min-width: 220px;
     text-align: left;
 }
 tr {

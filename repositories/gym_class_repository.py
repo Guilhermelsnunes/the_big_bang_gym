@@ -39,6 +39,10 @@ def select(id):
         gym_class = Gym_class(result['name'], result['date'], result['duration'], result['id'] )
     return gym_class
 
+
+
+#how to use this?!?!?!? - see seconds part of presentation 
+
 def upcoming_classes():
     gym_classes =[]
     sql = "SELECT * FROM gym_classes WHERE TO_TIMESTAMP( date, 'DD-MM-YYYY HH:MI:SS') > CURRENT_TIMESTAMP"
@@ -47,6 +51,8 @@ def upcoming_classes():
         gym_class = Gym_class(row['name'], row['date'], row['duration'], row['id'])
         gym_classes.append(gym_class)
     return gym_classes 
+
+
 
 
 def delete_all():
