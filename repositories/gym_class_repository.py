@@ -41,7 +41,7 @@ def select(id):
 
 
 
-#how to use this?!?!?!? - see seconds part of presentation 
+#how to use this?!?!?!? - see seconds part of presentation ?
 
 def upcoming_classes():
     gym_classes =[]
@@ -51,6 +51,7 @@ def upcoming_classes():
         gym_class = Gym_class(row['name'], row['date'], row['duration'], row['id'])
         gym_classes.append(gym_class)
     return gym_classes 
+
 
 
 
