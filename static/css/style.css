@@ -1,6 +1,7 @@
 main {
-    text-align:left;
+    text-align:center;
     padding: 80px;
+    font-size: large;
 }
 
 body, select, input{
