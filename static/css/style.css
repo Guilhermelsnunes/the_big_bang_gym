@@ -1,3 +1,8 @@
+main {
+    text-align:left;
+    padding: 80px;
+}
+
 body, select, input{
     font-family: 'Raleway', sans-serif; 
 }
