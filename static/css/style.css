@@ -9,10 +9,10 @@ body, select, input{
 }
 
 body {
-    background: rgb(230, 229, 229);
+    background: rgb(201, 196, 196);
     background-image: url('/static/images/30b.png');
     background-repeat:no-repeat;
-    background-size:cover;
+    background-size: 100%;
 }
 
 h1 {
