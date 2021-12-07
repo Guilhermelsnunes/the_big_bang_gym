@@ -2,6 +2,7 @@ table {
     padding: 25px;
     box-sizing: border-box;
     border-collapse: collapse;
+    
 }
 td,th{
     padding-left:25px;
@@ -16,8 +17,8 @@ tr:hover{
 }
 
 table tr:nth-child(even){
-    background:#bad1f9;
+    background:#bdc5d1;
 }
 table tr:nth-child(odd) {
-    background:#94b8f5;
+    background:#9fa5af;
 }

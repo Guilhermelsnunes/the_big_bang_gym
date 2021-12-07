@@ -4,10 +4,19 @@ body, select, input{
 
 body {
     background: rgb(230, 229, 229);
+    background-image: url('/static/images/30b.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 h1 {
     font-weight: 700;
+    padding-left: 1px;
+    text-align:center
+}
+
+h3 {
+    text-align: center;
 }
 
 a:visited{

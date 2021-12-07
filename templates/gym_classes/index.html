@@ -14,7 +14,8 @@
 
   {% for gym_class in gym_classes %}
   <tr>
-    <td>{{gym_class.name}},{{gym_class.date }}</td>
+    <td>{{gym_class.name}}</td>
+    <td>{{gym_class.date }}</td>
     <td>{{gym_class.duration}}</td>
     <td><a href="/gym_classes/{{gym_class.id}}">Details</a></td>
     <td><a href="/gym_classes/edit/{{gym_class.id}}">Edit</a></td>

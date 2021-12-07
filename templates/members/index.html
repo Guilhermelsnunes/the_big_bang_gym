@@ -13,7 +13,7 @@
   </tr>
   {% for member in members %}
   <tr>
-    <td>{{member.last_name}},{{member.first_name }}</td>
+    <td>{{member.last_name}}, {{member.first_name }}</td>
     <td>{{member.age}}</td>
     <td><a href="/members/{{member.id}}">Details</a></td>
     <td><a href="/members/edit/{{member.id}}">Edit</a></td>
