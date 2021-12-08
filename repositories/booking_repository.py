@@ -27,24 +27,7 @@ def save(member_id, gym_class_id):
 def select_all():
     bookings = []
 
-# SELECT
-#   b.id,
-#   b.member_id,
-#   b.gym_class_id,
-#   m.first_name,
-#   m.last_name,
-#   m.age,
-#   g.name,
-#   g.date,
-#   g.duration
-# FROM bookings b
-# JOIN members m ON m.id = b.member_id
-# JOIN gym_classes g ON g.id = b.gym_class_id
 
-#        member = Member(row['first_name'], row ['last_name'], row ['age'], row['member_id'])
-#        gym_class = Gym_class(row['name'], row['date'], row['duration'], row['gym_class_id'] )
-#        booking = Booking(member, gym_class, row['id'])
-#
  
 
     sql = "SELECT * FROM bookings"
@@ -56,8 +39,6 @@ def select_all():
         booking = Booking(member, gym_class, row['id'])
         bookings.append(booking)
     return bookings
-
-
 
 
 
