@@ -60,3 +60,5 @@ def save():
     member = Member(request.form['first_name'],request.form['last_name'],request.form['age'],request.form['id'])
     member_repository.edit(member)
     return redirect('/members')
+
+    

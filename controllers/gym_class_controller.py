@@ -42,7 +42,7 @@ def create():
 
 
 
-#    dont forget delete - below!
+#    dont forget delete with id 
 @gym_classes_blueprint.route("/gym_classes/remove/<id>")
 def delete(id):
     gym_class_repository.delete(id)
@@ -64,7 +64,5 @@ def save():
     gym_class = Gym_class(request.form['name'],request.form['date'],request.form['duration'],request.form['id'])
     gym_class_repository.edit(gym_class)
     return redirect('/gym_classes')
-
-
 
 
