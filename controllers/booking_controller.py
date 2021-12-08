@@ -54,17 +54,14 @@ def add():
 
 @bookings_blueprint.route("/bookings/create", methods=['POST'])
 def create():
-    #member = member_repository.select(request.form['member_id'])
-    #gym_class = gym_class_repository.select(request.form['gym_class_id'])
-    #booking = Booking(member, gym_class)
-    #booking_repository.save(booking)
+
 
     booking_repository.save(request.form['member_id'], request.form['gym_class_id'])
     return redirect('/bookings')
 
 
 
-#  EDIT a booking and post  -  ver o select q ta branco!
+#  EDIT a booking and post
 
 @bookings_blueprint.route("/bookings/edit/<id>")
 def edit(id):

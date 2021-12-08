@@ -14,7 +14,7 @@ def members():
     return render_template("members/index.html", members = members)
 
 
-# show all id of memembers
+# show all id of memmbers
 @members_blueprint.route("/members/<id>")
 def show(id):
     member = member_repository.select(id)
@@ -61,4 +61,3 @@ def save():
     member_repository.edit(member)
     return redirect('/members')
 
-    
