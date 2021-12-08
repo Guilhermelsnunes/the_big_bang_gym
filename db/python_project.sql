@@ -45,3 +45,5 @@ INSERT INTO  bookings (member_id, gym_class_id) VALUES (4,1);
 INSERT INTO  bookings (member_id, gym_class_id) VALUES (5,2);
 INSERT INTO  bookings (member_id, gym_class_id) VALUES (6,3);
 INSERT INTO  bookings (member_id, gym_class_id) VALUES (7,4);
+
+
