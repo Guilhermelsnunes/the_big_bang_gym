@@ -4,11 +4,16 @@ This is an applictication for the staff og a gym to add new customer, gym classe
 
 In order to access the app you need to follow the steps below:
 
-Fork the file from github.
+Fork/clone the file from github.
 
 Create a database on your computer inide the file (terminal:
      python_project git:(main)  psql -d python_project -f db/python_project.sql
      
+Create the database -   create db python_project
+
+Database calls Python_project
+
+Postgress(SQL) - download if necessary
 
 On terminal type:
      run flask
@@ -20,6 +25,3 @@ The app is very simple, you have a home page with a briedf message and you have 
 The idea is to be only one or two clicks away from any functionality your staff would like to access or check. 
 
 
-
-     
-     
