@@ -11,6 +11,8 @@ Create a database on your computer inide the file (terminal:
      
 Create the database -   create db python_project
 
+Install Flask/PIP/psychopg
+
 Database calls Python_project
 
 Postgress(SQL) - download if necessary
